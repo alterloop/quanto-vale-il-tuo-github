@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quanto Vale Il Tuo GitHub?</title>
+  <style>
+    :root {
+      --bg: #f6f1e8;
+      --surface: rgba(255, 252, 245, 0.78);
+      --surface-strong: #fffaf0;
+      --text: #1d1d1b;
+      --muted: #5a564f;
+      --accent: #c84f1a;
+      --accent-dark: #8f3511;
+      --line: rgba(29, 29, 27, 0.12);
+      --shadow: 0 24px 70px rgba(74, 42, 23, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(200, 79, 26, 0.12), transparent 28%),
+        radial-gradient(circle at right 20%, rgba(143, 53, 17, 0.12), transparent 24%),
+        linear-gradient(180deg, #f4eee3 0%, var(--bg) 50%, #efe5d7 100%);
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 40px 0 56px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 28px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.45);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .hero {
+      display: grid;
+      gap: 28px;
+      align-items: start;
+      text-align: center;
+      justify-items: center;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 11ch;
+      font-size: clamp(3rem, 9vw, 7.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+    }
+
+    .subhead {
+      max-width: 46rem;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.35rem, 3vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      color: var(--accent-dark);
+    }
+
+    .lede {
+      max-width: 54rem;
+      margin: 0;
+      font-size: clamp(1.05rem, 2vw, 1.4rem);
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .lede strong {
+      color: var(--text);
+    }
+
+    .cta-card {
+      margin-top: 18px;
+      padding: 28px;
+      border: 1px solid rgba(29, 29, 27, 0.08);
+      border-radius: 28px;
+      background: var(--surface);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-card h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      line-height: 1.05;
+    }
+
+    .cta-card p {
+      margin: 0 0 22px;
+      max-width: 48rem;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      padding: 20px 22px;
+      border: 1px solid rgba(29, 29, 27, 0.16);
+      border-radius: 20px;
+      background: var(--surface-strong);
+      color: var(--text);
+      font: inherit;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      resize: vertical;
+    }
+
+    textarea:focus {
+      outline: 2px solid rgba(200, 79, 26, 0.24);
+      border-color: rgba(200, 79, 26, 0.42);
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.92rem;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 16px 24px;
+      background: linear-gradient(180deg, #db5b22 0%, var(--accent) 100%);
+      color: #fff9f1;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.96rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: transform 140ms ease, box-shadow 140ms ease;
+      box-shadow: 0 16px 30px rgba(200, 79, 26, 0.24);
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 34px rgba(200, 79, 26, 0.3);
+    }
+
+    .status {
+      min-height: 1.5em;
+      margin-top: 10px;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.95rem;
+      color: var(--accent-dark);
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 1120px);
+        padding-top: 24px;
+        padding-bottom: 28px;
+      }
+
+      .cta-card {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .form-row {
+        align-items: stretch;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="eyebrow">Campagna GitHub Growth</div>
+
+    <section class="hero" aria-labelledby="main-title">
+      <h1 id="main-title">Quanto vale il tuo GitHub?</h1>
+      <p class="subhead">Il tuo codice pubblico ti fa guadagnare o ti fa perdere opportunita?</p>
+      <p class="lede">
+        Ogni repository racconta chi sei, come lavori e che livello di fiducia ispiri.
+        <strong>GitHub non e solo dove pubblichi codice:</strong> e una leva commerciale, reputazionale e professionale.
+      </p>
+    </section>
+
+    <section class="cta-card" aria-labelledby="response-title">
+      <h2 id="response-title">Scrivi la tua risposta</h2>
+      <p>
+        Per ora registriamo l'interesse direttamente dalla landing. Il submit e gestito lato client:
+        mostriamo una conferma e conserviamo temporaneamente il testo nel browser.
+      </p>
+
+      <form id="response-form">
+        <label class="sr-only" for="answer">La tua risposta</label>
+        <textarea
+          id="answer"
+          name="answer"
+          placeholder="Esempio: oggi il mio GitHub non genera fiducia, non mi porta lead e non valorizza davvero il mio lavoro..."
+          required
+        ></textarea>
+
+        <div class="form-row">
+          <div class="hint">La risposta viene salvata in `localStorage` finche non decidiamo l'integrazione reale.</div>
+          <button type="submit">Invia la risposta</button>
+        </div>
+        <div class="status" id="status" aria-live="polite"></div>
+      </form>
+
+      <div class="footer-note">
+        Prossimo step naturale: collegare il form a email, webhook o CRM per trasformare la landing in raccolta lead.
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById("response-form");
+    const answer = document.getElementById("answer");
+    const status = document.getElementById("status");
+    const storageKey = "github-growth-landing-answer";
+
+    const savedAnswer = window.localStorage.getItem(storageKey);
+    if (savedAnswer) {
+      answer.value = savedAnswer;
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const value = answer.value.trim();
+      if (!value) {
+        status.textContent = "Scrivi una risposta prima di inviare.";
+        answer.focus();
+        return;
+      }
+
+      window.localStorage.setItem(storageKey, value);
+      status.textContent = "Risposta registrata. Il testo e stato salvato nel browser per questa demo.";
+    });
+  </script>
+</body>
+</html>
