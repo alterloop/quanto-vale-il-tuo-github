@@ -6,22 +6,19 @@
   <title>Quanto Vale Il Tuo GitHub?</title>
   <style>
     :root {
-      --bg: #f4efe7;
-      --panel-dark: #15171c;
-      --panel-dark-2: #1c2027;
-      --panel-light: rgba(255, 252, 247, 0.92);
-      --field: #fffdf8;
-      --text: #18161a;
-      --muted: #67616a;
-      --light-text: #f3efe8;
-      --light-muted: rgba(243, 239, 232, 0.72);
-      --line: rgba(24, 22, 26, 0.1);
-      --accent: #d45a21;
-      --accent-dark: #a34317;
-      --green: #1f8d57;
-      --red: #c7372f;
-      --shadow: 0 30px 80px rgba(46, 28, 18, 0.14);
-      --radius: 30px;
+      --bg: #f8f5ef;
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-soft: rgba(255, 252, 247, 0.9);
+      --field: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --line: rgba(17, 24, 39, 0.08);
+      --accent: #ea580c;
+      --accent-dark: #c2410c;
+      --green: #16a34a;
+      --red: #dc2626;
+      --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+      --radius: 28px;
       --font-ui: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     }
 
@@ -35,9 +32,9 @@
       font-family: var(--font-ui);
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(212, 90, 33, 0.16), transparent 24%),
-        radial-gradient(circle at 82% 16%, rgba(31, 141, 87, 0.08), transparent 16%),
-        linear-gradient(180deg, #f8f3ea 0%, var(--bg) 54%, #eee4d7 100%);
+        radial-gradient(circle at top left, rgba(234, 88, 12, 0.12), transparent 20%),
+        radial-gradient(circle at 86% 18%, rgba(22, 163, 74, 0.08), transparent 16%),
+        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 58%, #f1ece3 100%);
     }
 
     .sr-only {
@@ -83,7 +80,7 @@
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(360px, 420px);
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 410px);
       gap: 20px;
       min-height: calc(100vh - 64px);
     }
@@ -93,15 +90,14 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow: hidden;
+      border: 1px solid var(--line);
     }
 
     .hero-card {
       position: relative;
       padding: 26px 28px;
-      background:
-        radial-gradient(circle at top right, rgba(212, 90, 33, 0.16), transparent 26%),
-        linear-gradient(145deg, #16191f 0%, var(--panel-dark) 52%, var(--panel-dark-2) 100%);
-      color: var(--light-text);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 245, 0.94));
+      color: var(--text);
       display: grid;
       grid-template-rows: auto auto 1fr auto;
       gap: 18px;
@@ -121,7 +117,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      color: var(--light-muted);
+      color: var(--muted);
       font-size: 0.84rem;
       letter-spacing: 0.03em;
     }
@@ -135,7 +131,7 @@
       width: 11px;
       height: 11px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.22);
+      background: rgba(17, 24, 39, 0.12);
     }
 
     .dots span:first-child {
@@ -165,7 +161,7 @@
       max-width: 34rem;
       font-size: clamp(1.18rem, 2vw, 1.7rem);
       line-height: 1.22;
-      color: #f1c9b1;
+      color: var(--accent-dark);
       font-weight: 600;
     }
 
@@ -174,11 +170,11 @@
       max-width: 35rem;
       font-size: clamp(1rem, 1.45vw, 1.12rem);
       line-height: 1.56;
-      color: var(--light-muted);
+      color: var(--muted);
     }
 
     .lede strong {
-      color: var(--light-text);
+      color: var(--text);
     }
 
     .pills {
@@ -189,20 +185,19 @@
 
     .pills span {
       padding: 10px 14px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(17, 24, 39, 0.08);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.8);
       font-size: 0.88rem;
-      color: var(--light-text);
+      color: var(--text);
     }
 
     .repo-stage {
       align-self: end;
       padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(17, 24, 39, 0.08);
       border-radius: 24px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, #fffdf9 0%, #f9f4ec 100%);
       display: grid;
       gap: 16px;
     }
@@ -218,21 +213,21 @@
     .repo-tag {
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(234, 88, 12, 0.1);
       font-size: 0.82rem;
-      color: var(--light-text);
+      color: var(--accent-dark);
     }
 
     .repo-line {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: var(--light-muted);
+      color: var(--muted);
       font-size: 0.92rem;
     }
 
     .repo-line strong {
-      color: var(--light-text);
+      color: var(--text);
     }
 
     .repo-grid {
@@ -244,7 +239,8 @@
     .repo-panel {
       padding: 16px;
       border-radius: 20px;
-      background: rgba(10, 12, 16, 0.36);
+      background: #ffffff;
+      border: 1px solid rgba(17, 24, 39, 0.06);
       display: grid;
       gap: 12px;
     }
@@ -271,26 +267,26 @@
       gap: 14px;
       padding: 12px 14px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.06);
+      background: #f9fafb;
       font-size: 0.92rem;
     }
 
     .repo-item strong,
     .score-item strong {
-      color: var(--light-text);
+      color: var(--text);
       font-weight: 600;
     }
 
     .repo-item span,
     .score-item span {
-      color: var(--light-muted);
+      color: var(--muted);
     }
 
     .octo {
       width: 76px;
       height: 76px;
       border-radius: 22px;
-      background: linear-gradient(180deg, #fff7ec 0%, #f0e2cf 100%);
+      background: linear-gradient(180deg, #fff7ed 0%, #ffedd5 100%);
       display: grid;
       place-items: center;
       flex-shrink: 0;
@@ -299,13 +295,12 @@
     .octo svg {
       width: 44px;
       height: 44px;
-      fill: #15171c;
+      fill: #111827;
     }
 
     .form-card {
       padding: 24px;
-      background: var(--panel-light);
-      border: 1px solid rgba(24, 22, 26, 0.08);
+      background: var(--panel-soft);
       display: grid;
       grid-template-rows: auto auto 1fr auto;
       gap: 18px;
@@ -322,7 +317,7 @@
       width: fit-content;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(212, 90, 33, 0.1);
+      background: rgba(234, 88, 12, 0.1);
       color: var(--accent-dark);
       font-size: 0.78rem;
       font-weight: 700;
@@ -363,8 +358,8 @@
 
     input[type="email"]:focus,
     textarea:focus {
-      outline: 2px solid rgba(212, 90, 33, 0.18);
-      border-color: rgba(212, 90, 33, 0.4);
+      outline: 2px solid rgba(234, 88, 12, 0.16);
+      border-color: rgba(234, 88, 12, 0.34);
     }
 
     .form-row {
@@ -383,19 +378,19 @@
       border: 0;
       border-radius: 18px;
       padding: 16px 20px;
-      background: linear-gradient(180deg, #de672e 0%, var(--accent) 100%);
+      background: linear-gradient(180deg, #f97316 0%, var(--accent) 100%);
       color: #fffaf5;
       font: inherit;
       font-size: 0.98rem;
       font-weight: 700;
       cursor: pointer;
       transition: transform 140ms ease, box-shadow 140ms ease;
-      box-shadow: 0 16px 30px rgba(212, 90, 33, 0.2);
+      box-shadow: 0 16px 30px rgba(234, 88, 12, 0.18);
     }
 
     button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 20px 34px rgba(212, 90, 33, 0.24);
+      box-shadow: 0 20px 34px rgba(234, 88, 12, 0.22);
     }
 
     .status {
@@ -414,7 +409,7 @@
       gap: 4px;
       padding: 14px 16px;
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.7);
+      background: #ffffff;
       border: 1px solid rgba(24, 22, 26, 0.06);
     }
 
@@ -476,37 +471,37 @@
       <section class="hero-card" aria-labelledby="main-title">
         <div class="window-bar">
           <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
-          <div>github.com/tuo-profilo</div>
+          <div>GitHub Growth by Alterloop</div>
         </div>
 
         <div class="hero-copy">
           <h1 id="main-title">Quanto vale il tuo GitHub?</h1>
-          <p class="subhead">Sei percepito come uno che pubblica codice o come uno che sa davvero costruire valore?</p>
+          <p class="subhead">Migliora la tua presenza su GitHub senza trasformarla in una vetrina finta.</p>
           <p class="lede">
-            Ogni repository comunica ordine, profondita, affidabilita.
-            <strong>GitHub puo diventare portfolio, prova di competenza e leva commerciale</strong>,
-            ma solo se racconta bene il tuo lavoro.
+            Ogni repository comunica metodo, chiarezza e maturita tecnica.
+            <strong>Come su alterloop.dev, il punto non e sembrare piu grandi:</strong>
+            il punto e rendere piu leggibile il valore reale che hai gia costruito.
           </p>
           <div class="pills" aria-label="Punti chiave">
-            <span>piu credibilita</span>
-            <span>piu segnale geek</span>
-            <span>piu taglio italiano</span>
+            <span>open source credibile</span>
+            <span>tono tecnico ma umano</span>
+            <span>geek style distintivo</span>
           </div>
         </div>
 
         <div class="repo-stage" aria-hidden="true">
           <div class="repo-top">
-            <div class="repo-line"><strong>GitHub profile audit</strong><span>README, pinned repo, narrativa tecnica</span></div>
-            <div class="repo-tag">made in Italy, built for tech</div>
+            <div class="repo-line"><strong>GitHub profile audit</strong><span>README, pinned repo, proof of work</span></div>
+            <div class="repo-tag">semplice e sostenibile</div>
           </div>
 
           <div class="repo-grid">
             <div class="repo-panel">
               <h2>Segnali che si vedono subito</h2>
               <div class="repo-list">
-                <div class="repo-item"><strong>README</strong><span>chiaro, utile, non ornamentale</span></div>
-                <div class="repo-item"><strong>Pinned repo</strong><span>casi reali, non deposito casuale</span></div>
-                <div class="repo-item"><strong>Profilo</strong><span>tono tecnico con personalita</span></div>
+                <div class="repo-item"><strong>README</strong><span>documentazione prima di tutto</span></div>
+                <div class="repo-item"><strong>Pinned repo</strong><span>progetti leggibili e ben selezionati</span></div>
+                <div class="repo-item"><strong>Profilo</strong><span>tono competente, niente posa</span></div>
               </div>
             </div>
 
@@ -517,9 +512,9 @@
                 </svg>
               </div>
               <div class="score-list">
-                <div class="score-item"><strong>Trust</strong><span>alto</span></div>
-                <div class="score-item"><strong>Chiarezza</strong><span>alta</span></div>
-                <div class="score-item"><strong>Distintivita</strong><span>reale</span></div>
+                <div class="score-item"><strong>Trust</strong><span>piu alto</span></div>
+                <div class="score-item"><strong>Chiarezza</strong><span>immediata</span></div>
+                <div class="score-item"><strong>Distintivita</strong><span>senza forzature</span></div>
               </div>
             </div>
           </div>
@@ -532,7 +527,7 @@
           <h2 id="response-title">Scrivi la tua risposta</h2>
           <p>
             Lascia la tua email e raccontaci come stai usando GitHub oggi.
-            Ti ricontatteremo per mostrarti cosa comunica gia bene e dove invece stai perdendo percezione di valore.
+            Ti ricontatteremo per mostrarti cosa funziona gia e dove puoi rendere il profilo piu chiaro, piu credibile e piu coerente con il tuo livello tecnico.
           </p>
         </div>
 
@@ -567,8 +562,8 @@
             <span>Capisci se il tuo GitHub appare solido, improvvisato o semplicemente poco leggibile.</span>
           </div>
           <div class="benefit">
-            <strong>Un riferimento piu vicino al mercato italiano</strong>
-            <span>Niente template generici: il tono resta tecnico ma con sensibilita piu locale e piu umana.</span>
+            <strong>Uno stile piu vicino ad Alterloop</strong>
+            <span>Tecnico, essenziale, consulenziale: meno rumore visivo, piu sostanza percepita.</span>
           </div>
           <div class="benefit">
             <strong>Un taglio concreto</strong>
@@ -576,7 +571,7 @@
           </div>
         </div>
 
-        <div class="footer-note">Pensato per founder, freelance, CTO e team tech che vogliono un GitHub piu autorevole senza sembrare costruito.</div>
+        <div class="footer-note">Pensato per founder, freelance, CTO e team tech che vogliono un GitHub piu autorevole senza sembrare artificiale.</div>
       </section>
     </div>
   </main>
