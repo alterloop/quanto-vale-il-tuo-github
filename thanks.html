@@ -6,178 +6,262 @@
   <title>Grazie — Quanto Vale Il Tuo GitHub?</title>
   <style>
     :root {
-      --bg: #f7f1e7;
-      --surface: rgba(255, 252, 246, 0.88);
-      --surface-strong: #fffcf7;
-      --text: #171515;
-      --muted: #5e5a54;
-      --accent: #c84f1a;
-      --accent-dark: #8f3511;
-      --green: #2f8f5b;
-      --red: #c83d32;
-      --line: rgba(23, 21, 21, 0.12);
-      --shadow: 0 24px 70px rgba(61, 35, 21, 0.14);
+      --bg: #f4efe7;
+      --panel-dark: #15171c;
+      --panel-dark-2: #1c2027;
+      --panel-light: rgba(255, 252, 247, 0.92);
+      --text: #18161a;
+      --muted: #67616a;
+      --light-text: #f3efe8;
+      --light-muted: rgba(243, 239, 232, 0.72);
+      --accent: #d45a21;
+      --accent-dark: #a34317;
+      --green: #1f8d57;
+      --red: #c7372f;
+      --line: rgba(24, 22, 26, 0.1);
+      --shadow: 0 30px 80px rgba(46, 28, 18, 0.14);
       --linkedin: #0a66c2;
       --linkedin-dark: #004182;
+      --font-ui: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       min-height: 100vh;
       display: grid;
       place-items: center;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: var(--font-ui);
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(200, 79, 26, 0.16), transparent 26%),
-        radial-gradient(circle at 85% 12%, rgba(47, 143, 91, 0.12), transparent 18%),
-        radial-gradient(circle at right 30%, rgba(143, 53, 17, 0.1), transparent 22%),
-        linear-gradient(180deg, #f6f0e5 0%, var(--bg) 48%, #efe4d5 100%);
+        radial-gradient(circle at top left, rgba(212, 90, 33, 0.16), transparent 24%),
+        radial-gradient(circle at 82% 16%, rgba(31, 141, 87, 0.08), transparent 16%),
+        linear-gradient(180deg, #f8f3ea 0%, var(--bg) 54%, #eee4d7 100%);
     }
 
     .page {
-      width: min(760px, calc(100% - 32px));
-      padding: 28px 0;
-      display: grid;
-      gap: 22px;
-      justify-items: center;
-      text-align: center;
+      width: min(980px, calc(100% - 32px));
+      padding: 18px 0;
     }
 
     .eyebrow {
-      display: inline-block;
-      padding: 8px 14px;
-      border: 1px solid var(--line);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 9px 14px;
+      border: 1px solid rgba(24, 22, 26, 0.08);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.5);
-      font-family: "Courier New", monospace;
-      font-size: 0.76rem;
+      background: rgba(255, 255, 255, 0.56);
+      font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .card {
-      width: 100%;
-      overflow: hidden;
-      padding: 28px 26px 24px;
-      border: 1px solid rgba(29, 29, 27, 0.08);
-      border-radius: 28px;
-      background: var(--surface);
-      backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-      display: grid;
-      gap: 16px;
-      position: relative;
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green) 0 33.33%, #f6f1e7 33.33% 66.66%, var(--red) 66.66% 100%);
     }
 
-    .card::before {
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 360px);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .panel {
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-panel {
+      position: relative;
+      padding: 26px 28px;
+      background:
+        radial-gradient(circle at top right, rgba(212, 90, 33, 0.16), transparent 26%),
+        linear-gradient(145deg, #16191f 0%, var(--panel-dark) 52%, var(--panel-dark-2) 100%);
+      color: var(--light-text);
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-panel::before {
       content: "";
       position: absolute;
       inset: 0 auto auto 0;
       width: 100%;
-      height: 6px;
-      background: linear-gradient(90deg, var(--green) 0 33.33%, #f6f1e7 33.33% 66.66%, var(--red) 66.66% 100%);
+      height: 5px;
+      background: linear-gradient(90deg, var(--green) 0 33.33%, #f2ede4 33.33% 66.66%, var(--red) 66.66% 100%);
     }
 
-    .topline {
+    .window-bar {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: var(--muted);
-      font-family: "Courier New", monospace;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--light-muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.03em;
     }
 
-    .topline::before,
-    .topline::after {
-      content: "";
-      width: 34px;
-      height: 1px;
-      background: var(--line);
+    .dots {
+      display: flex;
+      gap: 8px;
     }
 
-    .check {
-      width: 54px;
-      height: 54px;
-      margin: 0 auto;
+    .dots span {
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
-      background: linear-gradient(180deg, #db5b22 0%, var(--accent) 100%);
-      display: grid;
-      place-items: center;
+      background: rgba(255, 255, 255, 0.22);
     }
 
-    .check svg {
-      width: 28px;
-      height: 28px;
-      stroke: #fff9f1;
-      stroke-width: 2.5;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .dots span:first-child {
+      background: var(--green);
+    }
+
+    .dots span:last-child {
+      background: var(--red);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2rem, 5.4vw, 3.1rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+      max-width: 11ch;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
     }
 
     .body {
       margin: 0;
-      font-size: clamp(1rem, 1.8vw, 1.12rem);
+      max-width: 34rem;
+      color: var(--light-muted);
+      font-size: 1.02rem;
       line-height: 1.58;
-      color: var(--muted);
     }
 
     .body strong {
-      color: var(--text);
+      color: var(--light-text);
     }
 
-    .divider {
-      width: 56px;
-      height: 1px;
-      background: var(--line);
-      margin: 2px auto;
+    .stage {
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      display: grid;
+      gap: 14px;
     }
 
-    .linkedin-label {
-      font-family: "Courier New", monospace;
+    .stage-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .stage-tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--light-text);
       font-size: 0.82rem;
+    }
+
+    .stage-note {
+      color: var(--light-muted);
+      font-size: 0.92rem;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .mini-item {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--light-text);
+      font-size: 0.93rem;
+    }
+
+    .mini-item span {
+      display: block;
+      margin-top: 4px;
+      color: var(--light-muted);
+      font-size: 0.88rem;
+    }
+
+    .side-panel {
+      padding: 24px;
+      background: var(--panel-light);
+      border: 1px solid rgba(24, 22, 26, 0.08);
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .side-kicker {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(212, 90, 33, 0.1);
+      color: var(--accent-dark);
+      font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+    }
+
+    .side-panel h2 {
+      margin: 0;
+      font-size: 1.28rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .side-panel p {
+      margin: 0;
       color: var(--muted);
+      line-height: 1.52;
+      font-size: 0.97rem;
     }
 
     .linkedin-btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
       justify-content: center;
-      padding: 14px 24px;
-      border-radius: 999px;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 18px;
       background: var(--linkedin);
       color: #fff;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.96rem;
+      font: inherit;
+      font-size: 0.98rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
       text-decoration: none;
-      box-shadow: 0 12px 28px rgba(10, 102, 194, 0.28);
+      box-shadow: 0 16px 28px rgba(10, 102, 194, 0.2);
       transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease;
     }
 
     .linkedin-btn:hover {
       background: var(--linkedin-dark);
       transform: translateY(-1px);
-      box-shadow: 0 18px 32px rgba(10, 102, 194, 0.34);
+      box-shadow: 0 20px 34px rgba(10, 102, 194, 0.24);
     }
 
     .linkedin-btn svg {
@@ -187,10 +271,22 @@
       flex-shrink: 0;
     }
 
+    .return-link {
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .return-link:hover {
+      text-decoration: underline;
+    }
+
     .footer {
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.88rem;
+      margin-top: 14px;
       color: var(--muted);
+      font-size: 0.88rem;
+      text-align: center;
     }
 
     .footer a {
@@ -202,10 +298,22 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 480px) {
-      .card {
-        padding: 24px 20px 20px;
-        border-radius: 22px;
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 980px);
+        padding: 12px 0 18px;
+      }
+
+      .hero-panel,
+      .side-panel {
+        padding: 20px;
+        border-radius: 24px;
       }
     }
   </style>
@@ -214,47 +322,58 @@
   <main class="page">
     <div class="eyebrow">Campagna GitHub Growth</div>
 
-    <div class="card">
-      <div class="topline">Risposta ricevuta</div>
+    <div class="layout">
+      <section class="panel hero-panel" aria-labelledby="thanks-title">
+        <div class="window-bar">
+          <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div>Risposta registrata</div>
+        </div>
 
-      <div class="check" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
+        <h1 id="thanks-title">Grazie per la tua risposta.</h1>
 
-      <h1>Grazie per la tua risposta.</h1>
+        <p class="body">
+          Hai appena aggiunto un segnale utile a una conversazione concreta.
+          <strong>Un GitHub ben costruito non mostra solo codice:</strong>
+          rende visibili metodo, affidabilita e maturita tecnica.
+        </p>
 
-      <p class="body">
-        Hai appena aggiunto un segnale utile a una conversazione concreta.
-        <strong>Un GitHub ben costruito non mostra solo codice:</strong>
-        rende visibile metodo, affidabilita e maturita tecnica.
-      </p>
+        <div class="stage" aria-hidden="true">
+          <div class="stage-top">
+            <div class="stage-note">Prossimo passo: continuare la conversazione fuori dal form.</div>
+            <div class="stage-tag">restiamo in contatto</div>
+          </div>
 
-      <div class="divider"></div>
+          <div class="mini-list">
+            <div class="mini-item">Developer branding<span>riflessioni pratiche su come farsi leggere meglio online</span></div>
+            <div class="mini-item">Open source e reputazione<span>come trasformare codice pubblico in segnale professionale</span></div>
+            <div class="mini-item">Cultura tecnica italiana<span>taglio piu locale, meno posa, piu sostanza</span></div>
+          </div>
+        </div>
+      </section>
 
-      <p class="linkedin-label">Restiamo in contatto</p>
+      <aside class="panel side-panel">
+        <div class="side-kicker">Continuiamo su LinkedIn</div>
+        <h2>Se il tema ti interessa, ci sentiamo li.</h2>
+        <p>Pubblico contenuti su GitHub, posizionamento tecnico, open source e presenza professionale per chi lavora nel software.</p>
 
-      <p class="body">
-        Pubblico riflessioni su developer branding, open source e cultura tecnica nelle aziende italiane.
-        Se vuoi, continuiamo li.
-      </p>
+        <a
+          class="linkedin-btn"
+          href="https://www.linkedin.com/in/yafb/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Seguimi su LinkedIn"
+        >
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          Seguimi su LinkedIn
+        </a>
 
-      <a
-        class="linkedin-btn"
-        href="https://www.linkedin.com/in/yafb/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Seguimi su LinkedIn"
-      >
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-        Seguimi su LinkedIn
-      </a>
+        <a class="return-link" href="index.html">Torna alla campagna</a>
+      </aside>
     </div>
 
-    <p class="footer">
-      Torna alla <a href="index.html">campagna</a> &middot; Un progetto <a href="https://alterloop.it" target="_blank" rel="noopener">Alterloop</a>
-    </p>
+    <p class="footer">Un progetto <a href="https://alterloop.it" target="_blank" rel="noopener">Alterloop</a></p>
   </main>
 </body>
 </html>
