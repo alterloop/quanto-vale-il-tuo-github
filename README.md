@@ -49,7 +49,7 @@ Volutamente minimal e geek:
 
 ## Alterloop
 
-Questa campagna è un'iniziativa di **[Alterloop](https://alterloop.it)** — studio italiano che aiuta aziende e team a costruire una presenza tecnica credibile, sostenibile e distintiva.
+Questa campagna è un'iniziativa di **[Alterloop](https://alterloop.dev)** — studio italiano che aiuta aziende e team a costruire una presenza tecnica credibile, sostenibile e distintiva.
 
 ---
 
