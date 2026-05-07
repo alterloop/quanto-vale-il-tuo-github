@@ -18,7 +18,7 @@
       --green: #16a34a;
       --red: #dc2626;
       --shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
-      --radius: 28px;
+      --radius: 8px;
       --font-ui: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     }
 
@@ -50,17 +50,17 @@
     }
 
     .page {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1040px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 16px 0;
+      padding: 36px 0;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 14px;
-      padding: 9px 14px;
+      margin-bottom: 12px;
+      padding: 8px 12px;
       border: 1px solid rgba(24, 22, 26, 0.08);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.56);
@@ -80,9 +80,9 @@
 
     .layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 410px);
-      gap: 20px;
-      min-height: calc(100vh - 64px);
+      grid-template-columns: minmax(0, 1fr) minmax(330px, 380px);
+      gap: 16px;
+      align-items: stretch;
     }
 
     .hero-card,
@@ -95,12 +95,12 @@
 
     .hero-card {
       position: relative;
-      padding: 26px 28px;
+      padding: 22px 24px 24px;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 251, 245, 0.94));
       color: var(--text);
       display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      gap: 18px;
+      grid-template-rows: auto 1fr auto auto;
+      gap: 14px;
     }
 
     .hero-card::before {
@@ -118,7 +118,7 @@
       justify-content: space-between;
       gap: 16px;
       color: var(--muted);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       letter-spacing: 0.03em;
     }
 
@@ -142,180 +142,57 @@
       background: var(--red);
     }
 
-    .hero-copy {
-      max-width: 660px;
-      display: grid;
-      gap: 14px;
-    }
-
     h1 {
       margin: 0;
-      max-width: 10ch;
-      font-size: clamp(3rem, 6.6vw, 6rem);
-      line-height: 0.92;
-      letter-spacing: -0.05em;
+      max-width: 9.8ch;
+      font-size: 7.35rem;
+      line-height: 0.9;
+      letter-spacing: 0;
     }
 
     .subhead {
       margin: 0;
-      max-width: 34rem;
-      font-size: clamp(1.18rem, 2vw, 1.7rem);
-      line-height: 1.22;
+      max-width: 30rem;
+      font-size: 1.18rem;
+      line-height: 1.28;
       color: var(--accent-dark);
-      font-weight: 600;
+      font-weight: 500;
     }
 
-    .lede {
-      margin: 0;
-      max-width: 35rem;
-      font-size: clamp(1rem, 1.45vw, 1.12rem);
-      line-height: 1.56;
+    .prompt-card {
+      max-width: 31rem;
+      padding: 4px 0 4px 14px;
+      border-left: 3px solid var(--accent);
       color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.45;
     }
 
-    .lede strong {
-      color: var(--text);
-    }
-
-    .pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .pills span {
-      padding: 10px 14px;
-      border: 1px solid rgba(17, 24, 39, 0.08);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.8);
-      font-size: 0.88rem;
-      color: var(--text);
-    }
-
-    .repo-stage {
-      align-self: end;
-      padding: 18px;
-      border: 1px solid rgba(17, 24, 39, 0.08);
-      border-radius: 24px;
-      background: linear-gradient(180deg, #fffdf9 0%, #f9f4ec 100%);
-      display: grid;
-      gap: 16px;
-    }
-
-    .repo-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-
-    .repo-tag {
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(234, 88, 12, 0.1);
-      font-size: 0.82rem;
-      color: var(--accent-dark);
-    }
-
-    .repo-line {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .repo-line strong {
-      color: var(--text);
-    }
-
-    .repo-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 14px;
-    }
-
-    .repo-panel {
-      padding: 16px;
-      border-radius: 20px;
-      background: #ffffff;
-      border: 1px solid rgba(17, 24, 39, 0.06);
-      display: grid;
-      gap: 12px;
-    }
-
-    .repo-panel h2,
+    .prompt-card strong,
     .form-card h2 {
       margin: 0;
-      font-size: 1.18rem;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    .repo-list,
-    .score-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .repo-item,
-    .score-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: #f9fafb;
-      font-size: 0.92rem;
-    }
-
-    .repo-item strong,
-    .score-item strong {
       color: var(--text);
       font-weight: 600;
-    }
-
-    .repo-item span,
-    .score-item span {
-      color: var(--muted);
-    }
-
-    .octo {
-      width: 76px;
-      height: 76px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, #fff7ed 0%, #ffedd5 100%);
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-
-    .octo svg {
-      width: 44px;
-      height: 44px;
-      fill: #111827;
     }
 
     .form-card {
-      padding: 24px;
+      padding: 22px;
       background: var(--panel-soft);
       display: grid;
-      grid-template-rows: auto auto 1fr auto;
-      gap: 18px;
+      grid-template-rows: auto auto auto 1fr;
+      gap: 14px;
     }
 
     .form-head {
       display: grid;
-      gap: 10px;
+      gap: 8px;
     }
 
     .form-kicker {
       display: inline-flex;
       align-items: center;
       width: fit-content;
-      padding: 8px 12px;
+      padding: 7px 11px;
       border-radius: 999px;
       background: rgba(234, 88, 12, 0.1);
       color: var(--accent-dark);
@@ -329,30 +206,30 @@
       margin: 0;
       color: var(--muted);
       line-height: 1.52;
-      font-size: 0.97rem;
+      font-size: 0.93rem;
     }
 
     form {
       display: grid;
       align-content: start;
-      gap: 12px;
+      gap: 10px;
     }
 
     input[type="email"],
     textarea {
       width: 100%;
       border: 1px solid rgba(24, 22, 26, 0.12);
-      border-radius: 18px;
+      border-radius: 8px;
       background: var(--field);
       color: var(--text);
       font: inherit;
       font-size: 1rem;
       line-height: 1.5;
-      padding: 15px 16px;
+      padding: 13px 15px;
     }
 
     textarea {
-      min-height: 132px;
+      min-height: 120px;
       resize: vertical;
     }
 
@@ -369,15 +246,15 @@
 
     .hint {
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       line-height: 1.45;
     }
 
     button {
       width: 100%;
       border: 0;
-      border-radius: 18px;
-      padding: 16px 20px;
+      border-radius: 8px;
+      padding: 14px 18px;
       background: linear-gradient(180deg, #f97316 0%, var(--accent) 100%);
       color: #fffaf5;
       font: inherit;
@@ -394,48 +271,19 @@
     }
 
     .status {
-      min-height: 1.5em;
-      font-size: 0.92rem;
-      color: var(--accent-dark);
-    }
-
-    .benefits {
-      display: grid;
-      gap: 10px;
-    }
-
-    .benefit {
-      display: grid;
-      gap: 4px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: #ffffff;
-      border: 1px solid rgba(24, 22, 26, 0.06);
-    }
-
-    .benefit strong {
-      font-size: 0.95rem;
-    }
-
-    .benefit span {
-      color: var(--muted);
+      min-height: 1.2em;
       font-size: 0.88rem;
-      line-height: 1.4;
+      color: var(--accent-dark);
     }
 
     .footer-note {
       color: var(--muted);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       line-height: 1.45;
     }
 
     @media (max-width: 1024px) {
       .layout {
-        grid-template-columns: 1fr;
-        min-height: auto;
-      }
-
-      .repo-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -443,22 +291,26 @@
     @media (max-width: 720px) {
       .page {
         width: min(100% - 20px, 1180px);
-        padding: 12px 0 18px;
+        padding: 18px 0;
       }
 
       .hero-card,
       .form-card {
-        border-radius: 24px;
+        border-radius: var(--radius);
       }
 
       .hero-card,
       .form-card {
-        padding: 20px;
+        padding: 18px;
       }
 
       h1 {
-        max-width: 11ch;
-        font-size: clamp(2.6rem, 14vw, 4.3rem);
+        max-width: 10ch;
+        font-size: 3.3rem;
+      }
+
+      .subhead {
+        font-size: 1.12rem;
       }
     }
   </style>
@@ -474,60 +326,24 @@
           <div>GitHub Growth by Alterloop</div>
         </div>
 
-        <div class="hero-copy">
+        <div>
           <h1 id="main-title">Quanto vale il tuo GitHub?</h1>
-          <p class="subhead">Migliora la tua presenza su GitHub senza trasformarla in una vetrina finta.</p>
-          <p class="lede">
-            Ogni repository comunica metodo, chiarezza e maturita tecnica.
-            <strong>Come su alterloop.dev, il punto non e sembrare piu grandi:</strong>
-            il punto e rendere piu leggibile il valore reale che hai gia costruito.
-          </p>
-          <div class="pills" aria-label="Punti chiave">
-            <span>open source credibile</span>
-            <span>tono tecnico ma umano</span>
-            <span>geek style distintivo</span>
-          </div>
         </div>
 
-        <div class="repo-stage" aria-hidden="true">
-          <div class="repo-top">
-            <div class="repo-line"><strong>GitHub profile audit</strong><span>README, pinned repo, proof of work</span></div>
-            <div class="repo-tag">semplice e sostenibile</div>
-          </div>
+        <p class="subhead">Ti sta portando opportunita vere o oggi vale meno di quanto potrebbe?</p>
 
-          <div class="repo-grid">
-            <div class="repo-panel">
-              <h2>Segnali che si vedono subito</h2>
-              <div class="repo-list">
-                <div class="repo-item"><strong>README</strong><span>documentazione prima di tutto</span></div>
-                <div class="repo-item"><strong>Pinned repo</strong><span>progetti leggibili e ben selezionati</span></div>
-                <div class="repo-item"><strong>Profilo</strong><span>tono competente, niente posa</span></div>
-              </div>
-            </div>
-
-            <div class="repo-panel">
-              <div class="octo">
-                <svg viewBox="0 0 16 16" aria-hidden="true">
-                  <path d="M8 0C3.58 0 0 3.67 0 8.2c0 3.62 2.29 6.68 5.47 7.76.4.08.55-.18.55-.39 0-.19-.01-.82-.01-1.49-2.01.38-2.53-.5-2.69-.96-.09-.24-.48-.96-.82-1.15-.28-.15-.68-.53-.01-.54.63-.01 1.08.59 1.23.84.72 1.24 1.87.89 2.33.68.07-.53.28-.89.5-1.09-1.78-.21-3.64-.91-3.64-4.05 0-.89.31-1.62.82-2.19-.08-.21-.36-1.03.08-2.15 0 0 .67-.22 2.2.84A7.42 7.42 0 0 1 8 4.88c.68 0 1.37.09 2.01.28 1.53-1.06 2.2-.84 2.2-.84.44 1.12.16 1.94.08 2.15.51.57.82 1.29.82 2.19 0 3.15-1.87 3.84-3.65 4.05.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.47.55.39A8.22 8.22 0 0 0 16 8.2C16 3.67 12.42 0 8 0Z"/>
-                </svg>
-              </div>
-              <div class="score-list">
-                <div class="score-item"><strong>Trust</strong><span>piu alto</span></div>
-                <div class="score-item"><strong>Chiarezza</strong><span>immediata</span></div>
-                <div class="score-item"><strong>Distintivita</strong><span>senza forzature</span></div>
-              </div>
-            </div>
-          </div>
+        <div class="prompt-card">
+          Rispondi alla domanda principale in modo diretto.
+          <strong>Esempio:</strong> per noi vale molto, perche ci aiuta a mostrare come lavoriamo, cosa costruiamo e che livello tecnico abbiamo.
         </div>
       </section>
 
       <section class="form-card" aria-labelledby="response-title">
         <div class="form-head">
           <div class="form-kicker">Audit di posizionamento tecnico</div>
-          <h2 id="response-title">Scrivi la tua risposta</h2>
+          <h2 id="response-title">Rispondi alla domanda principale</h2>
           <p>
-            Lascia la tua email e raccontaci come stai usando GitHub oggi.
-            Ti ricontatteremo per mostrarti cosa funziona gia e dove puoi rendere il profilo piu chiaro, piu credibile e piu coerente con il tuo livello tecnico.
+            Lascia la tua email e raccontaci quanto vale oggi GitHub per te o per il tuo team.
           </p>
         </div>
 
@@ -545,7 +361,7 @@
           <textarea
             id="answer"
             name="answer"
-            placeholder="Esempio: il mio GitHub ha progetti validi, ma il profilo non li valorizza, non trasmette abbastanza fiducia e non mi differenzia come vorrei..."
+            placeholder="Esempio: per noi vale molto, perche ci aiuta a far vedere il nostro modo di lavorare e aumenta la fiducia..."
             required
           ></textarea>
 
@@ -556,22 +372,7 @@
           <div class="status" id="status" aria-live="polite"></div>
         </form>
 
-        <div class="benefits" aria-label="Cosa ottieni">
-          <div class="benefit">
-            <strong>Una lettura piu lucida del profilo</strong>
-            <span>Capisci se il tuo GitHub appare solido, improvvisato o semplicemente poco leggibile.</span>
-          </div>
-          <div class="benefit">
-            <strong>Uno stile piu vicino ad Alterloop</strong>
-            <span>Tecnico, essenziale, consulenziale: meno rumore visivo, piu sostanza percepita.</span>
-          </div>
-          <div class="benefit">
-            <strong>Un taglio concreto</strong>
-            <span>README, progetti in evidenza, struttura del profilo e segnali di fiducia da migliorare.</span>
-          </div>
-        </div>
-
-        <div class="footer-note">Pensato per founder, freelance, CTO e team tech che vogliono un GitHub piu autorevole senza sembrare artificiale.</div>
+        <div class="footer-note">Poche righe bastano. L'importante e rispondere in modo sincero e concreto.</div>
       </section>
     </div>
   </main>
