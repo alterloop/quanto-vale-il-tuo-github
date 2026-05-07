@@ -6,15 +6,23 @@
   <title>Quanto Vale Il Tuo GitHub?</title>
   <style>
     :root {
-      --bg: #f6f1e8;
-      --surface: rgba(255, 252, 245, 0.78);
-      --surface-strong: #fffaf0;
-      --text: #1d1d1b;
-      --muted: #5a564f;
-      --accent: #c84f1a;
-      --accent-dark: #8f3511;
-      --line: rgba(29, 29, 27, 0.12);
-      --shadow: 0 24px 70px rgba(74, 42, 23, 0.14);
+      --bg: #f4efe7;
+      --panel-dark: #15171c;
+      --panel-dark-2: #1c2027;
+      --panel-light: rgba(255, 252, 247, 0.92);
+      --field: #fffdf8;
+      --text: #18161a;
+      --muted: #67616a;
+      --light-text: #f3efe8;
+      --light-muted: rgba(243, 239, 232, 0.72);
+      --line: rgba(24, 22, 26, 0.1);
+      --accent: #d45a21;
+      --accent-dark: #a34317;
+      --green: #1f8d57;
+      --red: #c7372f;
+      --shadow: 0 30px 80px rgba(46, 28, 18, 0.14);
+      --radius: 30px;
+      --font-ui: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     }
 
     * {
@@ -24,32 +32,12 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: var(--font-ui);
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(200, 79, 26, 0.12), transparent 28%),
-        radial-gradient(circle at right 20%, rgba(143, 53, 17, 0.12), transparent 24%),
-        linear-gradient(180deg, #f4eee3 0%, var(--bg) 50%, #efe5d7 100%);
-    }
-
-    .page {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 40px 0 56px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 28px;
-      padding: 10px 16px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.45);
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+        radial-gradient(circle at top left, rgba(212, 90, 33, 0.16), transparent 24%),
+        radial-gradient(circle at 82% 16%, rgba(31, 141, 87, 0.08), transparent 16%),
+        linear-gradient(180deg, #f8f3ea 0%, var(--bg) 54%, #eee4d7 100%);
     }
 
     .sr-only {
@@ -64,165 +52,418 @@
       border: 0;
     }
 
-    .hero {
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 16px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding: 9px 14px;
+      border: 1px solid rgba(24, 22, 26, 0.08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.56);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--green) 0 33.33%, #f6f1e7 33.33% 66.66%, var(--red) 66.66% 100%);
+    }
+
+    .layout {
       display: grid;
-      gap: 28px;
-      align-items: start;
-      text-align: center;
-      justify-items: center;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, 420px);
+      gap: 20px;
+      min-height: calc(100vh - 64px);
+    }
+
+    .hero-card,
+    .form-card {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 26px 28px;
+      background:
+        radial-gradient(circle at top right, rgba(212, 90, 33, 0.16), transparent 26%),
+        linear-gradient(145deg, #16191f 0%, var(--panel-dark) 52%, var(--panel-dark-2) 100%);
+      color: var(--light-text);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--green) 0 33.33%, #f2ede4 33.33% 66.66%, var(--red) 66.66% 100%);
+    }
+
+    .window-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: var(--light-muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.03em;
+    }
+
+    .dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dots span {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .dots span:first-child {
+      background: var(--green);
+    }
+
+    .dots span:last-child {
+      background: var(--red);
+    }
+
+    .hero-copy {
+      max-width: 660px;
+      display: grid;
+      gap: 14px;
     }
 
     h1 {
       margin: 0;
-      max-width: 11ch;
-      font-size: clamp(3rem, 9vw, 7.5rem);
+      max-width: 10ch;
+      font-size: clamp(3rem, 6.6vw, 6rem);
       line-height: 0.92;
       letter-spacing: -0.05em;
     }
 
     .subhead {
-      max-width: 46rem;
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(1.35rem, 3vw, 2.2rem);
-      font-weight: 700;
-      line-height: 1.18;
-      letter-spacing: -0.03em;
-      color: var(--accent-dark);
+      max-width: 34rem;
+      font-size: clamp(1.18rem, 2vw, 1.7rem);
+      line-height: 1.22;
+      color: #f1c9b1;
+      font-weight: 600;
     }
 
     .lede {
-      max-width: 54rem;
       margin: 0;
-      font-size: clamp(1.05rem, 2vw, 1.4rem);
-      line-height: 1.6;
-      color: var(--muted);
+      max-width: 35rem;
+      font-size: clamp(1rem, 1.45vw, 1.12rem);
+      line-height: 1.56;
+      color: var(--light-muted);
     }
 
     .lede strong {
-      color: var(--text);
+      color: var(--light-text);
     }
 
-    .cta-card {
-      margin-top: 18px;
-      padding: 28px;
-      border: 1px solid rgba(29, 29, 27, 0.08);
-      border-radius: 28px;
-      background: var(--surface);
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pills span {
+      padding: 10px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.88rem;
+      color: var(--light-text);
+    }
+
+    .repo-stage {
+      align-self: end;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
+      display: grid;
+      gap: 16px;
     }
 
-    .cta-card h2 {
-      margin: 0 0 12px;
-      font-size: clamp(1.6rem, 3vw, 2.3rem);
-      line-height: 1.05;
+    .repo-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
-    .cta-card p {
-      margin: 0 0 22px;
-      max-width: 48rem;
+    .repo-tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.82rem;
+      color: var(--light-text);
+    }
+
+    .repo-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--light-muted);
+      font-size: 0.92rem;
+    }
+
+    .repo-line strong {
+      color: var(--light-text);
+    }
+
+    .repo-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 14px;
+    }
+
+    .repo-panel {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(10, 12, 16, 0.36);
+      display: grid;
+      gap: 12px;
+    }
+
+    .repo-panel h2,
+    .form-card h2 {
+      margin: 0;
+      font-size: 1.18rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .repo-list,
+    .score-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .repo-item,
+    .score-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 0.92rem;
+    }
+
+    .repo-item strong,
+    .score-item strong {
+      color: var(--light-text);
+      font-weight: 600;
+    }
+
+    .repo-item span,
+    .score-item span {
+      color: var(--light-muted);
+    }
+
+    .octo {
+      width: 76px;
+      height: 76px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #fff7ec 0%, #f0e2cf 100%);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .octo svg {
+      width: 44px;
+      height: 44px;
+      fill: #15171c;
+    }
+
+    .form-card {
+      padding: 24px;
+      background: var(--panel-light);
+      border: 1px solid rgba(24, 22, 26, 0.08);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+    }
+
+    .form-head {
+      display: grid;
+      gap: 10px;
+    }
+
+    .form-kicker {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(212, 90, 33, 0.1);
+      color: var(--accent-dark);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .form-card p {
+      margin: 0;
       color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.52;
+      font-size: 0.97rem;
     }
 
     form {
       display: grid;
-      gap: 16px;
+      align-content: start;
+      gap: 12px;
     }
 
     input[type="email"],
     textarea {
       width: 100%;
-      padding: 16px 22px;
-      border: 1px solid rgba(29, 29, 27, 0.16);
-      border-radius: 20px;
-      background: var(--surface-strong);
+      border: 1px solid rgba(24, 22, 26, 0.12);
+      border-radius: 18px;
+      background: var(--field);
       color: var(--text);
       font: inherit;
-      font-size: 1.05rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.5;
+      padding: 15px 16px;
     }
 
     textarea {
-      min-height: 180px;
+      min-height: 132px;
       resize: vertical;
     }
 
     input[type="email"]:focus,
     textarea:focus {
-      outline: 2px solid rgba(200, 79, 26, 0.24);
-      border-color: rgba(200, 79, 26, 0.42);
+      outline: 2px solid rgba(212, 90, 33, 0.18);
+      border-color: rgba(212, 90, 33, 0.4);
     }
 
     .form-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      align-items: center;
-      justify-content: space-between;
+      display: grid;
+      gap: 10px;
     }
 
     .hint {
       color: var(--muted);
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.92rem;
+      font-size: 0.85rem;
+      line-height: 1.45;
     }
 
     button {
+      width: 100%;
       border: 0;
-      border-radius: 999px;
-      padding: 16px 24px;
-      background: linear-gradient(180deg, #db5b22 0%, var(--accent) 100%);
-      color: #fff9f1;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.96rem;
+      border-radius: 18px;
+      padding: 16px 20px;
+      background: linear-gradient(180deg, #de672e 0%, var(--accent) 100%);
+      color: #fffaf5;
+      font: inherit;
+      font-size: 0.98rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
       cursor: pointer;
       transition: transform 140ms ease, box-shadow 140ms ease;
-      box-shadow: 0 16px 30px rgba(200, 79, 26, 0.24);
+      box-shadow: 0 16px 30px rgba(212, 90, 33, 0.2);
     }
 
     button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 20px 34px rgba(200, 79, 26, 0.3);
+      box-shadow: 0 20px 34px rgba(212, 90, 33, 0.24);
     }
 
     .status {
       min-height: 1.5em;
-      margin-top: 10px;
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--accent-dark);
     }
 
-    .footer-note {
-      margin-top: 18px;
+    .benefits {
+      display: grid;
+      gap: 10px;
+    }
+
+    .benefit {
+      display: grid;
+      gap: 4px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(24, 22, 26, 0.06);
+    }
+
+    .benefit strong {
+      font-size: 0.95rem;
+    }
+
+    .benefit span {
       color: var(--muted);
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 1024px) {
+      .layout {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .repo-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 720px) {
       .page {
-        width: min(100% - 20px, 1120px);
-        padding-top: 24px;
-        padding-bottom: 28px;
+        width: min(100% - 20px, 1180px);
+        padding: 12px 0 18px;
       }
 
-      .cta-card {
+      .hero-card,
+      .form-card {
+        border-radius: 24px;
+      }
+
+      .hero-card,
+      .form-card {
         padding: 20px;
-        border-radius: 22px;
       }
 
-      .form-row {
-        align-items: stretch;
-      }
-
-      button {
-        width: 100%;
+      h1 {
+        max-width: 11ch;
+        font-size: clamp(2.6rem, 14vw, 4.3rem);
       }
     }
   </style>
@@ -231,47 +472,113 @@
   <main class="page">
     <div class="eyebrow">Campagna GitHub Growth</div>
 
-    <section class="hero" aria-labelledby="main-title">
-      <h1 id="main-title">Quanto vale il tuo GitHub?</h1>
-      <p class="subhead">Il tuo codice pubblico ti fa guadagnare o ti fa perdere opportunita?</p>
-      <p class="lede">
-        Ogni repository racconta chi sei, come lavori e che livello di fiducia ispiri.
-        <strong>GitHub non e solo dove pubblichi codice:</strong> e una leva commerciale, reputazionale e professionale.
-      </p>
-    </section>
-
-    <section class="cta-card" aria-labelledby="response-title">
-      <h2 id="response-title">Scrivi la tua risposta</h2>
-      <p>
-        Lascia la tua email e raccontaci come stai usando GitHub oggi. Ti contatteremo per mostrarti come trasformarlo in una leva concreta.
-      </p>
-
-      <form id="response-form">
-
-        <label class="sr-only" for="email">Email</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="La tua email"
-          required
-        >
-
-        <label class="sr-only" for="answer">La tua risposta</label>
-        <textarea
-          id="answer"
-          name="answer"
-          placeholder="Esempio: oggi il mio GitHub non genera fiducia, non mi porta lead e non valorizza davvero il mio lavoro..."
-          required
-        ></textarea>
-
-        <div class="form-row">
-          <div class="hint">I tuoi dati vengono inviati in modo sicuro e non verranno ceduti a terzi.</div>
-          <button type="submit">Invia la risposta</button>
+    <div class="layout">
+      <section class="hero-card" aria-labelledby="main-title">
+        <div class="window-bar">
+          <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div>github.com/tuo-profilo</div>
         </div>
-        <div class="status" id="status" aria-live="polite"></div>
-      </form>
-    </section>
+
+        <div class="hero-copy">
+          <h1 id="main-title">Quanto vale il tuo GitHub?</h1>
+          <p class="subhead">Sei percepito come uno che pubblica codice o come uno che sa davvero costruire valore?</p>
+          <p class="lede">
+            Ogni repository comunica ordine, profondita, affidabilita.
+            <strong>GitHub puo diventare portfolio, prova di competenza e leva commerciale</strong>,
+            ma solo se racconta bene il tuo lavoro.
+          </p>
+          <div class="pills" aria-label="Punti chiave">
+            <span>piu credibilita</span>
+            <span>piu segnale geek</span>
+            <span>piu taglio italiano</span>
+          </div>
+        </div>
+
+        <div class="repo-stage" aria-hidden="true">
+          <div class="repo-top">
+            <div class="repo-line"><strong>GitHub profile audit</strong><span>README, pinned repo, narrativa tecnica</span></div>
+            <div class="repo-tag">made in Italy, built for tech</div>
+          </div>
+
+          <div class="repo-grid">
+            <div class="repo-panel">
+              <h2>Segnali che si vedono subito</h2>
+              <div class="repo-list">
+                <div class="repo-item"><strong>README</strong><span>chiaro, utile, non ornamentale</span></div>
+                <div class="repo-item"><strong>Pinned repo</strong><span>casi reali, non deposito casuale</span></div>
+                <div class="repo-item"><strong>Profilo</strong><span>tono tecnico con personalita</span></div>
+              </div>
+            </div>
+
+            <div class="repo-panel">
+              <div class="octo">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M8 0C3.58 0 0 3.67 0 8.2c0 3.62 2.29 6.68 5.47 7.76.4.08.55-.18.55-.39 0-.19-.01-.82-.01-1.49-2.01.38-2.53-.5-2.69-.96-.09-.24-.48-.96-.82-1.15-.28-.15-.68-.53-.01-.54.63-.01 1.08.59 1.23.84.72 1.24 1.87.89 2.33.68.07-.53.28-.89.5-1.09-1.78-.21-3.64-.91-3.64-4.05 0-.89.31-1.62.82-2.19-.08-.21-.36-1.03.08-2.15 0 0 .67-.22 2.2.84A7.42 7.42 0 0 1 8 4.88c.68 0 1.37.09 2.01.28 1.53-1.06 2.2-.84 2.2-.84.44 1.12.16 1.94.08 2.15.51.57.82 1.29.82 2.19 0 3.15-1.87 3.84-3.65 4.05.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.47.55.39A8.22 8.22 0 0 0 16 8.2C16 3.67 12.42 0 8 0Z"/>
+                </svg>
+              </div>
+              <div class="score-list">
+                <div class="score-item"><strong>Trust</strong><span>alto</span></div>
+                <div class="score-item"><strong>Chiarezza</strong><span>alta</span></div>
+                <div class="score-item"><strong>Distintivita</strong><span>reale</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-card" aria-labelledby="response-title">
+        <div class="form-head">
+          <div class="form-kicker">Audit di posizionamento tecnico</div>
+          <h2 id="response-title">Scrivi la tua risposta</h2>
+          <p>
+            Lascia la tua email e raccontaci come stai usando GitHub oggi.
+            Ti ricontatteremo per mostrarti cosa comunica gia bene e dove invece stai perdendo percezione di valore.
+          </p>
+        </div>
+
+        <form id="response-form">
+          <label class="sr-only" for="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="nome@azienda.it"
+            required
+          >
+
+          <label class="sr-only" for="answer">La tua risposta</label>
+          <textarea
+            id="answer"
+            name="answer"
+            placeholder="Esempio: il mio GitHub ha progetti validi, ma il profilo non li valorizza, non trasmette abbastanza fiducia e non mi differenzia come vorrei..."
+            required
+          ></textarea>
+
+          <div class="form-row">
+            <div class="hint">Invio sicuro. Nessuna cessione a terzi. Solo contesto utile per la conversazione.</div>
+            <button type="submit">Invia la risposta</button>
+          </div>
+          <div class="status" id="status" aria-live="polite"></div>
+        </form>
+
+        <div class="benefits" aria-label="Cosa ottieni">
+          <div class="benefit">
+            <strong>Una lettura piu lucida del profilo</strong>
+            <span>Capisci se il tuo GitHub appare solido, improvvisato o semplicemente poco leggibile.</span>
+          </div>
+          <div class="benefit">
+            <strong>Un riferimento piu vicino al mercato italiano</strong>
+            <span>Niente template generici: il tono resta tecnico ma con sensibilita piu locale e piu umana.</span>
+          </div>
+          <div class="benefit">
+            <strong>Un taglio concreto</strong>
+            <span>README, progetti in evidenza, struttura del profilo e segnali di fiducia da migliorare.</span>
+          </div>
+        </div>
+
+        <div class="footer-note">Pensato per founder, freelance, CTO e team tech che vogliono un GitHub piu autorevole senza sembrare costruito.</div>
+      </section>
+    </div>
   </main>
 
   <script>
@@ -290,7 +597,7 @@
       }
 
       if (answer.length < 10) {
-        status.textContent = "La risposta è troppo breve. Scrivi almeno qualche parola.";
+        status.textContent = "La risposta e troppo breve. Scrivi almeno qualche parola.";
         form.querySelector("#answer").focus();
         return;
       }
@@ -310,7 +617,7 @@
           window.location.href = "thanks.html";
         } else {
           const data = await response.json();
-          const errors = data.errors ? data.errors.map(e => e.message).join(", ") : "Errore sconosciuto.";
+          const errors = data.errors ? data.errors.map((e) => e.message).join(", ") : "Errore sconosciuto.";
           status.textContent = "Errore nell'invio: " + errors;
           btn.disabled = false;
         }

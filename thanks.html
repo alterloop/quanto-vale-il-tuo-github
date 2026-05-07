@@ -6,14 +6,17 @@
   <title>Grazie — Quanto Vale Il Tuo GitHub?</title>
   <style>
     :root {
-      --bg: #f6f1e8;
-      --surface: rgba(255, 252, 245, 0.78);
-      --text: #1d1d1b;
-      --muted: #5a564f;
+      --bg: #f7f1e7;
+      --surface: rgba(255, 252, 246, 0.88);
+      --surface-strong: #fffcf7;
+      --text: #171515;
+      --muted: #5e5a54;
       --accent: #c84f1a;
       --accent-dark: #8f3511;
-      --line: rgba(29, 29, 27, 0.12);
-      --shadow: 0 24px 70px rgba(74, 42, 23, 0.14);
+      --green: #2f8f5b;
+      --red: #c83d32;
+      --line: rgba(23, 21, 21, 0.12);
+      --shadow: 0 24px 70px rgba(61, 35, 21, 0.14);
       --linkedin: #0a66c2;
       --linkedin-dark: #004182;
     }
@@ -28,48 +31,80 @@
       font-family: Georgia, "Times New Roman", serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(200, 79, 26, 0.12), transparent 28%),
-        radial-gradient(circle at right 20%, rgba(143, 53, 17, 0.12), transparent 24%),
-        linear-gradient(180deg, #f4eee3 0%, var(--bg) 50%, #efe5d7 100%);
+        radial-gradient(circle at top left, rgba(200, 79, 26, 0.16), transparent 26%),
+        radial-gradient(circle at 85% 12%, rgba(47, 143, 91, 0.12), transparent 18%),
+        radial-gradient(circle at right 30%, rgba(143, 53, 17, 0.1), transparent 22%),
+        linear-gradient(180deg, #f6f0e5 0%, var(--bg) 48%, #efe4d5 100%);
     }
 
     .page {
-      width: min(640px, calc(100% - 32px));
-      padding: 56px 0;
+      width: min(760px, calc(100% - 32px));
+      padding: 28px 0;
       display: grid;
-      gap: 40px;
+      gap: 22px;
       justify-items: center;
       text-align: center;
     }
 
     .eyebrow {
       display: inline-block;
-      padding: 10px 16px;
+      padding: 8px 14px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.45);
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.82rem;
+      background: rgba(255, 255, 255, 0.5);
+      font-family: "Courier New", monospace;
+      font-size: 0.76rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
     .card {
       width: 100%;
-      padding: 40px 36px;
+      overflow: hidden;
+      padding: 28px 26px 24px;
       border: 1px solid rgba(29, 29, 27, 0.08);
       border-radius: 28px;
       background: var(--surface);
       backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
       display: grid;
-      gap: 20px;
+      gap: 16px;
+      position: relative;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--green) 0 33.33%, #f6f1e7 33.33% 66.66%, var(--red) 66.66% 100%);
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: var(--muted);
+      font-family: "Courier New", monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .topline::before,
+    .topline::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--line);
     }
 
     .check {
-      width: 56px;
-      height: 56px;
+      width: 54px;
+      height: 54px;
       margin: 0 auto;
       border-radius: 50%;
       background: linear-gradient(180deg, #db5b22 0%, var(--accent) 100%);
@@ -89,15 +124,15 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(2rem, 6vw, 3rem);
+      font-size: clamp(2rem, 5.4vw, 3.1rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
     }
 
     .body {
       margin: 0;
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      line-height: 1.65;
+      font-size: clamp(1rem, 1.8vw, 1.12rem);
+      line-height: 1.58;
       color: var(--muted);
     }
 
@@ -106,15 +141,15 @@
     }
 
     .divider {
-      width: 48px;
+      width: 56px;
       height: 1px;
       background: var(--line);
-      margin: 4px auto;
+      margin: 2px auto;
     }
 
     .linkedin-label {
-      font-family: "Trebuchet MS", Arial, sans-serif;
-      font-size: 0.88rem;
+      font-family: "Courier New", monospace;
+      font-size: 0.82rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -125,7 +160,8 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 14px 26px;
+      justify-content: center;
+      padding: 14px 24px;
       border-radius: 999px;
       background: var(--linkedin);
       color: #fff;
@@ -168,7 +204,7 @@
 
     @media (max-width: 480px) {
       .card {
-        padding: 28px 20px;
+        padding: 24px 20px 20px;
         border-radius: 22px;
       }
     }
@@ -179,6 +215,8 @@
     <div class="eyebrow">Campagna GitHub Growth</div>
 
     <div class="card">
+      <div class="topline">Risposta ricevuta</div>
+
       <div class="check" aria-hidden="true">
         <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
@@ -186,9 +224,9 @@
       <h1>Grazie per la tua risposta.</h1>
 
       <p class="body">
-        Hai appena contribuito a una conversazione che conta.<br>
-        <strong>Costruire una presenza tecnica credibile</strong> non è solo una questione di codice —
-        è strategia, reputazione, fiducia.
+        Hai appena aggiunto un segnale utile a una conversazione concreta.
+        <strong>Un GitHub ben costruito non mostra solo codice:</strong>
+        rende visibile metodo, affidabilita e maturita tecnica.
       </p>
 
       <div class="divider"></div>
@@ -197,12 +235,12 @@
 
       <p class="body">
         Pubblico riflessioni su developer branding, open source e cultura tecnica nelle aziende italiane.
-        Se il tema ti interessa, seguimi su LinkedIn.
+        Se vuoi, continuiamo li.
       </p>
 
       <a
         class="linkedin-btn"
-        href="https://www.linkedin.com/in/TUO-PROFILO/"
+        href="https://www.linkedin.com/in/yafb/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Seguimi su LinkedIn"
