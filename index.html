@@ -246,7 +246,13 @@
         Lascia la tua email e raccontaci come stai usando GitHub oggi. Ti contatteremo per mostrarti come trasformarlo in una leva concreta.
       </p>
 
-      <form id="response-form">
+      <form
+        id="response-form"
+        action="https://formspree.io/f/xykopvay"
+        method="POST"
+      >
+        <input type="hidden" name="_next" value="thanks.html">
+
         <label class="sr-only" for="email">Email</label>
         <input
           id="email"
@@ -292,8 +298,7 @@
         });
 
         if (response.ok) {
-          status.textContent = "Grazie! La tua risposta e stata inviata. Ti contatteremo presto.";
-          form.reset();
+          window.location.href = "thanks.html";
         } else {
           const data = await response.json();
           const errors = data.errors ? data.errors.map(e => e.message).join(", ") : "Errore sconosciuto.";
