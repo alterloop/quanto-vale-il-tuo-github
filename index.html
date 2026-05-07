@@ -132,10 +132,10 @@
       gap: 16px;
     }
 
+    input[type="email"],
     textarea {
       width: 100%;
-      min-height: 180px;
-      padding: 20px 22px;
+      padding: 16px 22px;
       border: 1px solid rgba(29, 29, 27, 0.16);
       border-radius: 20px;
       background: var(--surface-strong);
@@ -143,9 +143,14 @@
       font: inherit;
       font-size: 1.05rem;
       line-height: 1.6;
+    }
+
+    textarea {
+      min-height: 180px;
       resize: vertical;
     }
 
+    input[type="email"]:focus,
     textarea:focus {
       outline: 2px solid rgba(200, 79, 26, 0.24);
       border-color: rgba(200, 79, 26, 0.42);
@@ -238,11 +243,19 @@
     <section class="cta-card" aria-labelledby="response-title">
       <h2 id="response-title">Scrivi la tua risposta</h2>
       <p>
-        Per ora registriamo l'interesse direttamente dalla landing. Il submit e gestito lato client:
-        mostriamo una conferma e conserviamo temporaneamente il testo nel browser.
+        Lascia la tua email e raccontaci come stai usando GitHub oggi. Ti contatteremo per mostrarti come trasformarlo in una leva concreta.
       </p>
 
       <form id="response-form">
+        <label class="sr-only" for="email">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="La tua email"
+          required
+        >
+
         <label class="sr-only" for="answer">La tua risposta</label>
         <textarea
           id="answer"
@@ -252,41 +265,45 @@
         ></textarea>
 
         <div class="form-row">
-          <div class="hint">La risposta viene salvata in `localStorage` finche non decidiamo l'integrazione reale.</div>
+          <div class="hint">I tuoi dati vengono inviati in modo sicuro e non verranno ceduti a terzi.</div>
           <button type="submit">Invia la risposta</button>
         </div>
         <div class="status" id="status" aria-live="polite"></div>
       </form>
-
-      <div class="footer-note">
-        Prossimo step naturale: collegare il form a email, webhook o CRM per trasformare la landing in raccolta lead.
-      </div>
     </section>
   </main>
 
   <script>
     const form = document.getElementById("response-form");
-    const answer = document.getElementById("answer");
     const status = document.getElementById("status");
-    const storageKey = "github-growth-landing-answer";
 
-    const savedAnswer = window.localStorage.getItem(storageKey);
-    if (savedAnswer) {
-      answer.value = savedAnswer;
-    }
-
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
-      const value = answer.value.trim();
-      if (!value) {
-        status.textContent = "Scrivi una risposta prima di inviare.";
-        answer.focus();
-        return;
-      }
+      const btn = form.querySelector("button[type='submit']");
+      btn.disabled = true;
+      status.textContent = "Invio in corso...";
 
-      window.localStorage.setItem(storageKey, value);
-      status.textContent = "Risposta registrata. Il testo e stato salvato nel browser per questa demo.";
+      try {
+        const response = await fetch("https://formspree.io/f/xykopvay", {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          body: new FormData(form),
+        });
+
+        if (response.ok) {
+          status.textContent = "Grazie! La tua risposta e stata inviata. Ti contatteremo presto.";
+          form.reset();
+        } else {
+          const data = await response.json();
+          const errors = data.errors ? data.errors.map(e => e.message).join(", ") : "Errore sconosciuto.";
+          status.textContent = "Errore nell'invio: " + errors;
+          btn.disabled = false;
+        }
+      } catch {
+        status.textContent = "Errore di rete. Controlla la connessione e riprova.";
+        btn.disabled = false;
+      }
     });
   </script>
 </body>
